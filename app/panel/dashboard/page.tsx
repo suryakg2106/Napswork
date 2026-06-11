@@ -53,21 +53,21 @@ export default function DashboardPage() {
       </div>
 
       {/* TOP KPI GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-white rounded-[24px] p-7 border border-gray-100 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.05)] relative overflow-hidden group">
+          <div key={i} className="bg-white rounded-[24px] p-5 sm:p-7 border border-gray-100 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.05)] relative overflow-hidden group">
             <div className="flex justify-between items-start mb-6">
-              <div className={`w-12 h-12 rounded-[18px] ${stat.bg} ${stat.color} flex items-center justify-center`}>
-                <stat.icon size={24} strokeWidth={2.5} />
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-[18px] ${stat.bg} ${stat.color} flex items-center justify-center`}>
+                <stat.icon size={20} className="sm:w-6 sm:h-6" strokeWidth={2.5} />
               </div>
-              <span className={`flex items-center gap-1 text-[13px] font-bold px-3 py-1 rounded-full ${stat.isPositive ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'}`}>
-                {stat.isPositive ? <ArrowUpRight size={16} strokeWidth={3} /> : <ArrowDownRight size={16} strokeWidth={3} />}
+              <span className={`flex items-center gap-1 text-[11px] sm:text-[13px] font-bold px-2 sm:px-3 py-1 rounded-full ${stat.isPositive ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'}`}>
+                {stat.isPositive ? <ArrowUpRight size={14} className="sm:w-4 sm:h-4" strokeWidth={3} /> : <ArrowDownRight size={14} className="sm:w-4 sm:h-4" strokeWidth={3} />}
                 {stat.trend}
               </span>
             </div>
             <div>
-              <h3 className="text-gray-500 font-semibold text-sm mb-1">{stat.label}</h3>
-              <p className="text-[32px] font-black text-gray-900 tracking-tight leading-none">{stat.value}</p>
+              <h3 className="text-gray-500 font-semibold text-xs sm:text-sm mb-1">{stat.label}</h3>
+              <p className="text-2xl sm:text-[32px] font-black text-gray-900 tracking-tight leading-none">{stat.value}</p>
             </div>
           </div>
         ))}
@@ -77,16 +77,16 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* REVENUE CHART (Left 2/3) */}
-        <div className="lg:col-span-2 bg-white rounded-[24px] border border-gray-100 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.05)] p-8 flex flex-col">
+        <div className="lg:col-span-2 bg-white rounded-[24px] border border-gray-100 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.05)] p-5 sm:p-8 flex flex-col">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div>
-              <h2 className="text-xl font-black text-gray-900 tracking-tight">Revenue Performance</h2>
-              <p className="text-sm font-semibold text-gray-400 mt-1">Comparing current vs. previous period</p>
+              <h2 className="text-lg sm:text-xl font-black text-gray-900 tracking-tight">Revenue Performance</h2>
+              <p className="text-xs sm:text-sm font-semibold text-gray-400 mt-1">Comparing current vs. previous period</p>
             </div>
-            <div className="flex items-center gap-1 p-1 bg-gray-50 rounded-[14px] border border-gray-100">
-              <button className="px-5 py-2 text-sm font-bold bg-white text-gray-900 rounded-[10px] shadow-sm border border-gray-200/60">12 Months</button>
-              <button className="px-5 py-2 text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors">30 Days</button>
-              <button className="px-5 py-2 text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors">7 Days</button>
+            <div className="flex items-center gap-1 p-1 bg-gray-50 rounded-[14px] border border-gray-100 w-fit">
+              <button className="px-3 sm:px-5 py-2 text-xs sm:text-sm font-bold bg-white text-gray-900 rounded-[10px] shadow-sm border border-gray-200/60">12M</button>
+              <button className="px-3 sm:px-5 py-2 text-xs sm:text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors">30D</button>
+              <button className="px-3 sm:px-5 py-2 text-xs sm:text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors">7D</button>
             </div>
           </div>
           

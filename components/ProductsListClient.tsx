@@ -96,7 +96,7 @@ export default function ProductsListClient({ initialProducts }: ProductsListClie
 
       {/* Backend Control Bar */}
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-        <div className="p-5 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gray-50/30">
+        <div className="p-4 sm:p-5 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gray-50/30">
           <div className="relative flex-1 max-w-md group">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#3B82F6] transition-colors" size={18} />
             <input 
@@ -108,13 +108,13 @@ export default function ProductsListClient({ initialProducts }: ProductsListClie
             />
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-between sm:justify-end gap-4">
             {hasActiveFilters && (
               <button 
                 onClick={clearAllFilters}
                 className="text-sm font-bold text-red-500 hover:text-red-600 transition-colors"
               >
-                Clear Filters
+                Clear
               </button>
             )}
             <div className="relative">
@@ -123,7 +123,7 @@ export default function ProductsListClient({ initialProducts }: ProductsListClie
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all font-semibold shadow-sm ${(isFilterOpen || hasActiveFilters) ? 'bg-[#3B82F6] border-[#3B82F6] text-white' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'}`}
               >
                 <Filter size={18} />
-                Filters
+                <span className="hidden xs:inline">Filters</span>
                 {hasActiveFilters && (
                   <span className="flex items-center justify-center w-5 h-5 bg-white text-[#3B82F6] rounded-full text-[10px] font-black">
                     !

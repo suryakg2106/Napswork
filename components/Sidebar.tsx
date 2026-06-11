@@ -8,7 +8,8 @@ import {
   ArrowLeftRight, 
   Users, 
   BarChart3, 
-  ChevronRight 
+  ChevronRight,
+  X
 } from "lucide-react";
 import { cn } from "@/components/utils";
 import { useEffect, useState } from "react";
@@ -22,7 +23,12 @@ const menuItems = [
   { icon: BarChart3, label: "Sales Report", href: "/panel/salesreport" },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
   const [productCount, setProductCount] = useState<number | null>(null);
 
@@ -35,16 +41,34 @@ export function Sidebar() {
   }, [pathname]); // Refresh count on navigation
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-[240px] bg-white border-r border-[#E5E7EB] flex flex-col z-50">
-      {/* Company Logo Card */}
-      <div className="p-6">
-        <div className="bg-[#3B82F6] rounded-xl p-3 flex items-center gap-3 text-white">
-          <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center font-bold text-xl">
-            N
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-[60] lg:hidden animate-in fade-in duration-300" 
+          onClick={onClose}
+        />
+      )}
+
+      <aside className={cn(
+        "fixed left-0 top-0 h-full w-[240px] bg-white border-r border-[#E5E7EB] flex flex-col z-[70] transition-transform duration-300 lg:translate-x-0",
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        {/* Company Logo Card */}
+        <div className="p-6 flex items-center justify-between">
+          <div className="bg-[#3B82F6] rounded-xl p-3 flex items-center gap-3 text-white">
+            <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center font-bold text-xl">
+              N
+            </div>
+            <span className="font-bold text-lg tracking-tight">Napworks</span>
           </div>
-          <span className="font-bold text-lg tracking-tight">Napworks</span>
+          <button 
+            onClick={onClose}
+            className="p-2 text-gray-400 hover:bg-gray-50 rounded-lg lg:hidden"
+          >
+            <X size={20} />
+          </button>
         </div>
-      </div>
 
       {/* Navigation */}
       <nav className="flex-1 px-4 py-4 space-y-1">
@@ -83,5 +107,6 @@ export function Sidebar() {
         })}
       </nav>
     </aside>
+    </>
   );
 }

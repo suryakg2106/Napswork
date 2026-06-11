@@ -55,9 +55,9 @@ export default function TransactionPage() {
       </div>
 
       {/* SUMMARY CARDS GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {summaryCards.map((card, i) => (
-          <div key={i} className="bg-white rounded-[24px] p-6 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group">
+          <div key={i} className="bg-white rounded-[24px] p-5 sm:p-6 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group">
             {/* Subtle Top Border Highlight */}
             <div className={`absolute top-0 left-0 w-full h-1 ${i === 0 ? 'bg-[#0F111A]' : i === 1 ? 'bg-emerald-500' : i === 2 ? 'bg-rose-500' : 'bg-blue-500'}`}></div>
             

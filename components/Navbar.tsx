@@ -3,11 +3,18 @@
 import { Menu, Bell, Mail } from "lucide-react";
 import Image from "next/image";
 
-export function Navbar() {
+interface NavbarProps {
+  onMenuClick: () => void;
+}
+
+export function Navbar({ onMenuClick }: NavbarProps) {
   return (
-    <header className="fixed top-0 left-[240px] right-0 h-[70px] bg-white border-b border-[#E5E7EB] px-8 flex items-center justify-between z-40">
+    <header className="fixed top-0 left-0 lg:left-[240px] right-0 h-[70px] bg-white border-b border-[#E5E7EB] px-4 sm:px-8 flex items-center justify-between z-40">
       <div className="flex items-center gap-4">
-        <button className="p-2 text-gray-400 hover:bg-gray-50 rounded-lg transition-colors">
+        <button 
+          onClick={onMenuClick}
+          className="p-2 text-gray-400 hover:bg-gray-50 rounded-lg transition-colors lg:hidden"
+        >
           <Menu size={20} />
         </button>
       </div>

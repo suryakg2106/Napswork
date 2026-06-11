@@ -49,9 +49,9 @@ export default function SalesReportPage() {
       </div>
 
       {/* KPI CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {kpis.map((kpi, i) => (
-          <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between group hover:border-[#5B8260]/30 transition-colors">
+          <div key={i} className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between group hover:border-[#5B8260]/30 transition-colors">
             <div className="flex justify-between items-start mb-4">
               <span className="text-gray-500 font-medium text-sm">{kpi.label}</span>
               <div className={`flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-md ${kpi.isPositive ? 'text-[#3C5F3F] bg-[#3C5F3F]/10' : 'text-[#E64218] bg-[#E64218]/10'}`}>
